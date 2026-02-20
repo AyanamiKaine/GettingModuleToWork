@@ -84,17 +84,18 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: ilammy/msvc-dev-cmd@v1
 
       - name: Build and install math_module
         run: |
-          cmake -B math_module/build -S math_module -DCMAKE_INSTALL_PREFIX=install
+          cmake -B math_module/build -S math_module -G Ninja -DCMAKE_CXX_COMPILER=cl -DCMAKE_INSTALL_PREFIX=install
           cmake --build math_module/build
           cmake --install math_module/build
 
       - name: Build main project
         run: |
-          cmake -B build -DCMAKE_PREFIX_PATH=install
+          cmake -B build -G Ninja -DCMAKE_CXX_COMPILER=cl -DCMAKE_PREFIX_PATH=install
           cmake --build build
 
       - name: Run
-        run: ./build/Debug/app.exe
+        run: ./build/app.exe
