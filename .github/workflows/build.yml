@@ -41,17 +41,17 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y g++ ninja-build
+          sudo apt-get install -y g++-15 ninja-build
 
       - name: Build and install math_module
         run: |
-          cmake -B math_module/build -S math_module -G Ninja -DCMAKE_CXX_COMPILER=g++ -DCMAKE_INSTALL_PREFIX=install
+          cmake -B math_module/build -S math_module -G Ninja -DCMAKE_CXX_COMPILER=g++-15 -DCMAKE_INSTALL_PREFIX=install
           cmake --build math_module/build
           cmake --install math_module/build
 
       - name: Build main project
         run: |
-          cmake -B build -G Ninja -DCMAKE_CXX_COMPILER=g++ -DCMAKE_PREFIX_PATH=install
+          cmake -B build -G Ninja -DCMAKE_CXX_COMPILER=g++-15 -DCMAKE_PREFIX_PATH=install
           cmake --build build
 
       - name: Run
