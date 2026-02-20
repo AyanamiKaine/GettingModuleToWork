@@ -35,24 +35,22 @@ jobs:
   linux-gcc:
     name: Linux (GCC)
     runs-on: ubuntu-latest
+    container: fedora:latest
     steps:
       - uses: actions/checkout@v4
 
       - name: Install dependencies
-        run: |
-          sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
-          sudo apt-get update
-          sudo apt-get install -y g++-15 ninja-build
+        run: dnf install -y gcc-c++ cmake ninja-build
 
       - name: Build and install math_module
         run: |
-          cmake -B math_module/build -S math_module -G Ninja -DCMAKE_CXX_COMPILER=g++-15 -DCMAKE_INSTALL_PREFIX=install
+          cmake -B math_module/build -S math_module -G Ninja -DCMAKE_CXX_COMPILER=g++ -DCMAKE_INSTALL_PREFIX=install
           cmake --build math_module/build
           cmake --install math_module/build
 
       - name: Build main project
         run: |
-          cmake -B build -G Ninja -DCMAKE_CXX_COMPILER=g++-15 -DCMAKE_PREFIX_PATH=install
+          cmake -B build -G Ninja -DCMAKE_CXX_COMPILER=g++ -DCMAKE_PREFIX_PATH=install
           cmake --build build
 
       - name: Run
