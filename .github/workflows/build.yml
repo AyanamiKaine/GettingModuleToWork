@@ -8,7 +8,7 @@ on:
 
 jobs:
   linux-clang:
-    name: Linux (Clang)
+    name: Linux (Clang 21)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -33,7 +33,7 @@ jobs:
         run: ./build/app
 
   linux-gcc:
-    name: Linux (GCC)
+    name: Linux (GCC 15)
     runs-on: ubuntu-latest
     container: fedora:latest
     steps:
@@ -57,7 +57,7 @@ jobs:
         run: ./build/app
 
   windows-clang:
-    name: Windows (Clang)
+    name: Windows (Clang 21)
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
