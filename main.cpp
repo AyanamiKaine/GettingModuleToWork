@@ -2,7 +2,9 @@
 
 import math;
 
-int main() 
+int main()
 {
-    std::println("Hello, World!");
+    Calculator calc;
+    int result = calc.multiply(6, 7);
+    std::println("6 * 7 = {}", result);
 }
