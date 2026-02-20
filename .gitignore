@@ -1,0 +1,26 @@
+# Build directories
+build/
+math_module/build/
+install/
+
+# CMake generated files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+CMakeUserPresets.json
+
+# Ninja
+.ninja_deps
+.ninja_log
+
+# Compiled objects
+*.obj
+*.o
+*.lib
+*.a
+*.exe
+
+# C++ module caches
+*.bmi
+*.pcm
+*.ifc
