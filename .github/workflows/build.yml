@@ -80,8 +80,8 @@ jobs:
         run: ./build/app.exe
 
   windows-msvc:
-    name: Windows (MSVC)
-    runs-on: windows-latest
+    name: Windows (MSVC 2026)
+    runs-on: windows-2025-vs2026
     steps:
       - uses: actions/checkout@v4
       - uses: ilammy/msvc-dev-cmd@v1
